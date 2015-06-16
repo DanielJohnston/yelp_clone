@@ -16,4 +16,5 @@ end
 
 describe Restaurant, type: :model do
   it { is_expected.to have_many(:reviews).dependent(:destroy) }
+  it { is_expected.to belong_to :user }
 end
