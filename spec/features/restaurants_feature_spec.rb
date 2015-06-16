@@ -44,7 +44,7 @@ feature 'restaurants' do
       end
     end
 
-    context 'editing restaurants' do 
+    context 'editing restaurants' do
 
       before {Restaurant.create name: 'KFC'}
 
@@ -56,5 +56,18 @@ feature 'restaurants' do
         expect(page).to have_content 'Kentucky Fried Chicken'
         expect(current_path).to eq '/restaurants'
       end
+    end
+
+    context 'deleting restaurants' do
+
+      before {Restaurant.create name: 'KFC'}
+
+      scenario 'let a user delete a restaurant' do
+        visit '/restaurants'
+        click_link 'Delete KFC'
+        expect(page).not_to have_content 'KFC'
+        expect(page).to have_content 'Restaurant deleted successfully'
+      end
+
     end
 end
