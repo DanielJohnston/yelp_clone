@@ -12,5 +12,9 @@ feature 'reviewing' do
 
     expect(current_path).to eq '/restaurants'
     expect(page).to have_content('so so')
+
+    click_link 'KFC'
+
+    expect(page).to have_content('so so')
   end
 end
